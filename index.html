@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trideca</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      padding: 20px;
+      margin: 0;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    .header-wrapper {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header-wrapper h1 {
+      font-size: 2.2rem;
+      color: #5B40FF;
+      letter-spacing: 1.2px;
+      margin: 0;
+    }
+
+    .header-wrapper .subheading {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #bbb;
+      font-weight: 400;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #111;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 0 20px rgba(91, 64, 255, 0.3);
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .hint {
+      margin-top: 4px;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 28px;
+      background-color: #1a1a1a;
+      color: #fff;
+      border: 1px solid #333;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      height: 50px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #5B40FF;
+      box-shadow: 0 0 8px rgba(91, 64, 255, 0.5);
+      outline: none;
+    }
+
+    .checkbox-group {
+      margin-bottom: 30px;
+    }
+
+    .checkbox-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      margin-right: 10px;
+      accent-color: #5B40FF;
+      transform: scale(1.2);
+    }
+
+    input[type="submit"] {
+      background-color: #5B40FF;
+      color: #fff;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #4833cc;
+      transform: scale(1.02);
+    }
+
+    .logo {
+      display: block;
+      margin: 30px auto 0 auto;
+      width: 160px;
+      opacity: 0.85;
+      filter: drop-shadow(0 0 6px rgba(91, 64, 255, 0.3));
+    }
+
+    @media (min-width: 901px) {
+      .logo {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .logo {
+        position: static;
+        margin: 30px auto 0 auto;
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header-wrapper">
+    <h1>Trideca</h1>
+    <div class="subheading">Let's spark your business advantage.</div>
+  </div>
+
+  <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D5" method="POST">
+    <input type="hidden" name="oid" value="00D5g000">
+    <input type="hidden" name="retURL" value="https://www.trideca.com.au/insights">
+
+    <label for="first_name">First Name</label>
+    <input id="first_name" maxlength="40" name="first_name" type="text" required>
+
+    <label for="last_name">Last Name</label>
+    <input id="last_name" maxlength="80" name="last_name" type="text" required>
+
+    <label for="email">Email</label>
+    <input id="email" maxlength="80" name="email" type="email" required>
+
+    <label for="company">Company</label>
+    <input id="company" maxlength="40" name="company" type="text">
+
+    <label for="00NOb000004WbBp">Event</label>
+    <select id="00NOb000004WbBp" name="00NOb000004WbBp" title="Event" required>
+      <option value="">-- Select Event --</option>
+      <option value="Canberra AI">Canberra AI</option>
+    </select>
+
+    <label>AI Interest</label>
+    <div class="hint">Please select one or more interests from the options below.</div>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="00NOb000004WXub" value="Sovereign AI"> Sovereign AI</label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Multi Model AI"> Multi Model AI</label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Defence AI"> Defence AI</label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Trustworthy AI"> Trustworthy AI</label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Explainable AI"> Explainable AI</label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="AI People"> AI People</label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="AI Advisory"> AI Advisory</label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Just looking to talk"> Just looking to talk</label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Just interested in the datasheet"> Just interested in the datasheet</label>
+    </div>
+
+    <input type="submit" name="submit" value="Submit">
+
+    <!-- Logo below submit on mobile, fixed on desktop -->
+    <img src="Group%205395.png" alt="Trideca Logo" class="logo">
+  </form>
+
+</body>
+</html>
