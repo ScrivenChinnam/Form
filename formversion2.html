@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trideca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #000;
+        color: #fff;
+        font-family: "Space Grotesk", sans-serif;
+        padding: 20px;
+        margin: 0;
+        min-height: 100vh;
+        padding-bottom: 4rem;
+      }
+
+      .header-wrapper {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .header-wrapper h1 {
+        font-size: 2.2rem;
+        color: #5b40ff;
+        letter-spacing: 1.2px;
+        margin: 0;
+      }
+
+      .header-wrapper .subheading {
+        margin-top: 10px;
+        font-size: 0.6rem;
+        color: #bbb;
+        font-weight: 400;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #111;
+        padding: 25px;
+        border-radius: 18px;
+        box-shadow: 0 0 20px rgba(91, 64, 255, 0.3);
+        position: relative;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #ccc;
+      }
+
+      .form-container-logo {
+        width: 200px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 28px;
+        background-color: #1a1a1a;
+        color: #fff;
+        border: 1px solid #333;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        height: 50px;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #5b40ff;
+        box-shadow: 0 0 8px rgba(91, 64, 255, 0.5);
+        outline: none;
+      }
+
+      .multiselect-container {
+        position: relative;
+        width: 100%;
+        margin-bottom: 28px;
+      }
+
+      .multiselect-header {
+        width: 100%;
+        padding: 12px;
+        color: #fff;
+        border: 1px solid #333;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        height: 50px;
+        font-size: 1rem;
+      }
+
+      .multiselect-header:hover {
+        border-color: #5b40ff;
+      }
+
+      .multiselect-header.active {
+        border-color: #5b40ff;
+        box-shadow: 0 0 8px rgba(91, 64, 255, 0.5);
+        border-radius: 10px 10px 0 0;
+      }
+
+      .multiselect-text {
+        color: #999;
+        font-size: 0.85rem;
+      }
+
+      .multiselect-arrow {
+        transition: transform 0.3s ease;
+        color: #ccc;
+        font-size: 0.8rem;
+      }
+
+      .multiselect-header.active .multiselect-arrow {
+        transform: rotate(180deg);
+      }
+
+      .multiselect-options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #1a1a1a;
+        border: 1px solid #5b40ff;
+        border-top: none;
+        border-radius: 0 0 10px 10px;
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 1000;
+        display: none;
+        box-shadow: 0 4px 12px rgba(91, 64, 255, 0.3);
+      }
+
+      .multiselect-options.show {
+        display: block;
+      }
+
+      .multiselect-option {
+        padding: 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #2a2a2a;
+        color: #ddd;
+        font-size: 0.95rem;
+      }
+
+      .multiselect-option:last-child {
+        border-bottom: none;
+      }
+
+      .multiselect-option:hover {
+        background-color: #2a2a2a;
+      }
+
+      .multiselect-option input[type="checkbox"] {
+        margin-right: 10px;
+        accent-color: #5b40ff;
+        transform: scale(1.2);
+      }
+
+      .hint {
+        margin-top: 4px;
+        margin-bottom: 16px;
+        font-size: 0.85rem;
+        color: #777;
+      }
+
+      input[type="submit"] {
+        background-color: #5b40ff;
+        color: #fff;
+        padding: 14px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        width: 100%;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #4833cc;
+        transform: scale(1.02);
+      }
+
+      .logo {
+        display: block;
+        margin: 30px auto 0 auto;
+        width: 160px;
+        opacity: 0.85;
+        filter: drop-shadow(0 0 6px rgba(91, 64, 255, 0.3));
+      }
+
+      .selected-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+        background-color: ;
+      }
+
+      .tag {
+        background-color: #5b40ff;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        font-size: 0.75rem;
+      }
+
+      .tag .remove-tag {
+        margin-left: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.8rem;
+      }
+
+      .tag .remove-tag:hover {
+        color: #ccc;
+      }
+
+      .selected-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+        padding: 10px;
+        background-color: #111;
+        border-radius: 12px;
+      }
+
+      .multiselect-options::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .multiselect-options::-webkit-scrollbar-track {
+        background: #1a1a1a;
+        border-radius: 0 10px 10px 0;
+      }
+
+      .multiselect-options::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #5b40ff, #3e2bc9);
+        border-radius: 10px;
+      }
+
+      .multiselect-options::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #7a66ff, #5b40ff);
+      }
+
+      @media (min-width: 901px) {
+        .logo {
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          margin: 0;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .logo {
+          position: static;
+          margin: 30px auto 0 auto;
+          display: block;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header-wrapper">
+      <img src="trideca-logo.png" alt="" class="form-container-logo" />
+      <div class="subheading">Let's spark your business advantage.</div>
+    </div>
+
+    <form
+      action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D5g000"
+      method="POST"
+    >
+      <input type="hidden" name="oid" value="00D5g000" />
+      <input
+        type="hidden"
+        name="retURL"
+        value="https://www.trideca.com.au/insights"
+      />
+
+      <label for="first_name">First Name</label>
+      <input
+        id="first_name"
+        maxlength="40"
+        name="first_name"
+        type="text"
+        required
+      />
+
+      <label for="last_name">Last Name</label>
+      <input
+        id="last_name"
+        maxlength="80"
+        name="last_name"
+        type="text"
+        required
+      />
+
+      <label for="email">Email</label>
+      <input id="email" maxlength="80" name="email" type="email" required />
+
+      <label for="company">Company</label>
+      <input id="company" maxlength="40" name="company" type="text" />
+
+      <label for="00NOb000004WbBp">Event</label>
+      <select id="00NOb000004WbBp" name="00NOb000004WbBp" required>
+        <option value="">-- Select Event --</option>
+        <option value="Canberra AI">Canberra AI</option>
+      </select>
+
+      <label>AI Interest</label>
+      <div class="hint">
+        Please select one or more interests from the options below.
+      </div>
+
+      <div class="multiselect-container">
+        <div class="multiselect-header" onclick="toggleDropdown()">
+          <span class="multiselect-text" id="multiselect-text"
+            >Select AI Interests...</span
+          >
+          <span class="multiselect-arrow">▼</span>
+        </div>
+
+        <div class="multiselect-options" id="multiselect-options">
+          <div class="multiselect-option">
+            <input
+              type="checkbox"
+              name="00NOb000004WXub"
+              value="Sovereign AI"
+              onchange="updateTags()"
+            />
+            <span>Sovereign AI</span>
+          </div>
+          <div class="multiselect-option">
+            <input
+              type="checkbox"
+              name="00NOb000004WXub"
+              value="Multi Model AI"
+              onchange="updateTags()"
+            />
+            <span>Multi Model AI</span>
+          </div>
+          <div class="multiselect-option">
+            <input
+              type="checkbox"
+              name="00NOb000004WXub"
+              value="Defence AI"
+              onchange="updateTags()"
+            />
+            <span>Defence AI</span>
+          </div>
+          <div class="multiselect-option">
+            <input
+              type="checkbox"
+              name="00NOb000004WXub"
+              value="Trustworthy AI"
+              onchange="updateTags()"
+            />
+            <span>Trustworthy AI</span>
+          </div>
+          <div class="multiselect-option">
+            <input
+              type="checkbox"
+              name="00NOb000004WXub"
+              value="Explainable AI"
+              onchange="updateTags()"
+            />
+            <span>Explainable AI</span>
+          </div>
+          <div class="multiselect-option">
+            <input
+              type="checkbox"
+              name="00NOb000004WXub"
+              value="AI People"
+              onchange="updateTags()"
+            />
+            <span>AI People</span>
+          </div>
+          <div class="multiselect-option">
+            <input
+              type="checkbox"
+              name="00NOb000004WXub"
+              value="AI Advisory"
+              onchange="updateTags()"
+            />
+            <span>AI Advisory</span>
+          </div>
+          <div class="multiselect-option">
+            <input
+              type="checkbox"
+              name="00NOb000004WXub"
+              value="Just looking to talk"
+              onchange="updateTags()"
+            />
+            <span>Just looking to talk</span>
+          </div>
+          <div class="multiselect-option">
+            <input
+              type="checkbox"
+              name="00NOb000004WXub"
+              value="Just interested in the datasheet"
+              onchange="updateTags()"
+            />
+            <span>Just interested in the datasheet</span>
+          </div>
+        </div>
+
+        <div class="selected-tags" id="selected-tags"></div>
+      </div>
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      function toggleDropdown() {
+        const header = document.querySelector(".multiselect-header");
+        const options = document.getElementById("multiselect-options");
+        header.classList.toggle("active");
+        options.classList.toggle("show");
+      }
+
+      function updateTags() {
+        const tagsContainer = document.getElementById("selected-tags");
+        const checkboxes = document.querySelectorAll(
+          '.multiselect-options input[type="checkbox"]'
+        );
+        tagsContainer.innerHTML = "";
+
+        checkboxes.forEach((cb, index) => {
+          if (cb.checked) {
+            const tag = document.createElement("div");
+            tag.className = "tag";
+            tag.innerHTML = `${cb.value} <span class="remove-tag" onclick="removeTag(${index})">✖</span>`;
+            tagsContainer.appendChild(tag);
+          }
+        });
+      }
+
+      function removeTag(index) {
+        const checkboxes = document.querySelectorAll(
+          '.multiselect-options input[type="checkbox"]'
+        );
+        if (checkboxes[index]) {
+          checkboxes[index].checked = false;
+          updateTags();
+        }
+      }
+
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".multiselect-container")) {
+          const header = document.querySelector(".multiselect-header");
+          const options = document.getElementById("multiselect-options");
+          header.classList.remove("active");
+          options.classList.remove("show");
+        }
+      });
+    </script>
+  </body>
+</html>
