@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Trideca</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -23,33 +23,32 @@
 
     .header-wrapper {
       max-width: 600px;
-      margin: 0 auto 30px auto;
+      margin: 0 auto 20px auto;
       text-align: center;
     }
 
     .header-wrapper img.logo {
       width: 100%;
-      max-width: 420px;
+      max-width: 400px;
       height: auto;
       display: block;
       margin: 0 auto;
     }
 
     .header-wrapper .subheading {
-      margin-top: 14px;
-      font-size: 1.2rem;
+      margin-top: 12px;
+      font-size: 1.25rem;
       font-weight: 400;
       color: #bbb;
-      width: 100%;
-      max-width: 420px;
-      margin-left: auto;
-      margin-right: auto;
-      white-space: normal;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
 
     .header-wrapper img.stamp {
       width: 100%;
-      max-width: 140px;
+      max-width: 150px;
       height: auto;
       margin: 20px auto;
       display: block;
@@ -59,9 +58,9 @@
       max-width: 600px;
       margin: 0 auto;
       background-color: #111;
-      padding: 22px;
-      border-radius: 16px;
-      box-shadow: 0 0 16px rgba(91, 64, 255, 0.3);
+      padding: 20px;
+      border-radius: 18px;
+      box-shadow: 0 0 20px rgba(91, 64, 255, 0.3);
     }
 
     label {
@@ -75,31 +74,29 @@
     .hint {
       margin-top: 4px;
       margin-bottom: 14px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #777;
     }
 
     input[type="text"],
     input[type="email"],
-    select,
-    textarea {
+    select {
       width: 100%;
       padding: 10px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       background-color: #1a1a1a;
       color: #fff;
       border: 1px solid #333;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      height: 45px;
+      border-radius: 10px;
+      font-size: 1rem;
+      height: 44px;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     input:focus,
-    select:focus,
-    textarea:focus {
+    select:focus {
       border-color: #5B40FF;
-      box-shadow: 0 0 6px rgba(91, 64, 255, 0.5);
+      box-shadow: 0 0 8px rgba(91, 64, 255, 0.5);
       outline: none;
     }
 
@@ -107,7 +104,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .checkbox-group input[type="checkbox"] {
@@ -137,19 +134,13 @@
       border-color: #5B40FF;
     }
 
-    .checkbox-group input[type="checkbox"]:not(:checked) + .checkbox-box {
-      background-color: #1a1a1a;
-      color: #ddd;
-      border-color: #333;
-    }
-
     input[type="submit"] {
       background-color: #5B40FF;
       color: #fff;
-      padding: 12px 18px;
-      font-size: 0.95rem;
+      padding: 12px 20px;
+      font-size: 1rem;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       width: 100%;
       font-weight: bold;
@@ -162,14 +153,20 @@
     }
 
     @media (max-width: 600px) {
-      .header-wrapper img.logo,
-      .header-wrapper .subheading {
-        max-width: 90%;
-      }
-
       .checkbox-box {
         flex: 1 1 calc(50% - 10px);
         font-size: 0.85rem;
+      }
+
+      .subheading {
+        font-size: 1.1rem;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select {
+        height: 42px;
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -202,26 +199,24 @@
     <label for="title">Job Title</label>
     <input id="title" maxlength="40" name="title" type="text">
 
-    <!-- Disabled Event -->
     <label for="00NOb000004WbBp">Event</label>
     <select id="00NOb000004WbBp" name="00NOb000004WbBp" disabled>
       <option value="Canberra AI" selected>Canberra AI</option>
     </select>
     <input type="hidden" name="00NOb000004WbBp" value="Canberra AI">
 
-    <!-- AI Interests -->
     <label>AI Interest</label>
     <div class="hint">Please select one or more interests below.</div>
     <div class="checkbox-group">
       <label><input type="checkbox" name="00NOb000004WXub" value="Sovereign AI"><div class="checkbox-box">Sovereign AI</div></label>
-      <label><input type="checkbox" name="00NOb000004WXub" value="Multimodal AI"><div class="checkbox-box">Multimodal AI</div></label>
-      <label><input type="checkbox" name="00NOb000004WXub" value="Defence & Security AI"><div class="checkbox-box">Defence & Security AI</div></label>
-      <label><input type="checkbox" name="00NOb000004WXub" value="Trusted & Ethical AI"><div class="checkbox-box">Trusted & Ethical AI</div></label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Multi Model AI"><div class="checkbox-box">Multi Model AI</div></label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Defence AI"><div class="checkbox-box">Defence AI</div></label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Trustworthy AI"><div class="checkbox-box">Trustworthy AI</div></label>
       <label><input type="checkbox" name="00NOb000004WXub" value="Explainable AI"><div class="checkbox-box">Explainable AI</div></label>
-      <label><input type="checkbox" name="00NOb000004WXub" value="AI Talent & Workforce"><div class="checkbox-box">AI Talent & Workforce</div></label>
-      <label><input type="checkbox" name="00NOb000004WXub" value="AI Strategy & Advisory"><div class="checkbox-box">AI Strategy & Advisory</div></label>
-      <label><input type="checkbox" name="00NOb000004WXub" value="Exploring Ideas / open to chat"><div class="checkbox-box">Exploring Ideas / open to chat</div></label>
-      <label><input type="checkbox" name="00NOb000004WXub" value="Interested in product info"><div class="checkbox-box">Interested in product info</div></label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="AI People"><div class="checkbox-box">AI People</div></label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="AI Advisory"><div class="checkbox-box">AI Advisory</div></label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Just looking to talk"><div class="checkbox-box">Just looking to talk</div></label>
+      <label><input type="checkbox" name="00NOb000004WXub" value="Just interested in the datasheet"><div class="checkbox-box">Just interested in the datasheet</div></label>
     </div>
 
     <input type="submit" name="submit" value="Submit">
